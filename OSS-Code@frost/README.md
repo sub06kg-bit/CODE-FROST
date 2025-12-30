@@ -5,7 +5,7 @@
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-Team: BASS Blaster | COSMEON Hiring Challenge - Problem Statement 3
+Team: BASS Blaster
 
 ---
 
@@ -15,8 +15,6 @@ Team: BASS Blaster | COSMEON Hiring Challenge - Problem Statement 3
 git clone https://github.com/sub06kg-bit/OSS.git
 cd OSS
 
-# Run automated demo (no installation needed!)
-python fs_lite_cli.py demo
 ```
 
 ---
@@ -48,27 +46,86 @@ python fs_lite_cli.py demo
 ## 🏗️ Architecture
 
 ```txt
-frontend (Next.js)
-     ↓
-platform API (FastAPI)
-     ↓
-OSS Core (Flask)
-     ↓
-Master → Satellite Nodes
-     ↓
-Local shard storage
-🚀 Quick Start (Recommended – Docker)
-bash
-Copy code
-docker compose up --build
-Access:
+OSS/
+├── README.md
+├── SUMMARY.txt
+├── LICENSE
+├── requirements.txt
+├── .gitignore
+├── docker-compose.yml          # One‑command run (backend)
+├── fs_lite_cli.py              # CLI entry (optional legacy)
 
-UI → http://localhost:3000
-
-API → http://localhost:8000
-
-Master → http://localhost:5000/status
-
+├── backend/
+│   ├── Dockerfile
+│   ├── src/
+│   │   ├── main.py              # Backend entrypoint
+│   │   ├── _init_.py
+│   │
+│   │   ├── utils/
+│   │   │   ├── _init_.py
+│   │   │   └── logger.py
+│   │
+│   │   ├── sharding/
+│   │   │   ├── _init_.py
+│   │   │   └── engine.py
+│   │
+│   │   ├── distribution/
+│   │   │   ├── _init_.py
+│   │   │   └── strategies.py
+│   │
+│   │   ├── master/
+│   │   │   ├── _init_.py
+│   │   │   ├── coordinator.py
+│   │   │   ├── heartbeat.py
+│   │   │   └── shard_map.py
+│   │
+│   │   ├── node/
+│   │   │   ├── _init_.py
+│   │   │   └── satellite.py
+│   │
+│   │   └── client/
+│   │       ├── _init_.py
+│   │       └── oss_client.py
+│   │
+│   ├── demos/
+│   │   └── demo_full.py
+│   │
+│   └── tests/
+│       ├── _init_.py
+│       └── test_sharding.py
+│
+│   ├── metadata/               # SQLite DB (runtime)
+│   ├── storage/                # Shard storage (runtime)
+│   └── downloads/              # Reconstructed files
+│
+├── frontend/
+│   ├── Dockerfile
+│   ├── next.config.js
+│   ├── package.json
+│   ├── tsconfig.json
+│   ├── .env.example
+│
+│   ├── public/
+│   │   └── index.html
+│
+│   └── src/
+│       ├── pages/
+│       │   ├── _app.tsx
+│       │   └── index.tsx        # OSS Dashboard
+│       │
+│       ├── components/
+│       │   ├── UploadCard.tsx   # File upload UI
+│       │   ├── FileList.tsx     # Files + download
+│       │   ├── NodeHealth.tsx   # Node health graph
+│       │   ├── ShardMap.tsx     # D3 shard visualization
+│       │   └── NodeShardViewer.tsx
+│       │
+│       └── lib/
+│           └── api.ts           # Axios client
+│
+└── .github/
+    └── workflows/
+        └── ci.yml               # Optional CI
 ⚙️ Manual Run (Dev)
 bash
 Copy code
@@ -136,7 +193,7 @@ python fs_lite_cli.py status
 
 ## 🎬 Demo Video
 
-[▶️ Watch Demo on YouTube](https://www.youtube.com/watch?v=DT6ajf4hz-A&feature=youtu.be)
+[▶️ Watch Demo on YouTube](https://youtu.be/9HtQ0AX1Bdo?si=Beca5ULlk0FIQsUm)
 
 ---
 
@@ -205,7 +262,6 @@ MIT License - see [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- COSMEON Hiring Challenge
 - Distributed Systems Research Community
 - ISRO for orbital computing inspiration
 
