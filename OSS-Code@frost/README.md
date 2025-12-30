@@ -11,8 +11,8 @@ Team: BASS Blaster
 
 ## 🚀 Quick Start
 ```bash
-# Clone repository
-git clone https://github.com/sub06kg-bit/OSS.git
+# Clone repository 
+git clone https://github.com/sub06kg-bit/CODE-FROST/tree/main
 cd OSS
 
 ```
